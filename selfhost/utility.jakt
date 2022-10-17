@@ -283,7 +283,13 @@ struct MD5State {
     c: u32
     d: u32
 
-    function process(this, X: [u32]) -> MD5State {
+    function process(this, data: [u8]) throws -> MD5State {
+
+        mut X : [u32] = []
+
+        for i in 0..16 {
+            X.push( (data[4*i] as! u32) + ( (data[4*i+1] as! u32) << 8 ) + ( (data[4*i+2] as! u32) << 16 ) + ( (data[4*i+3] as! u32) << 24))
+        }
 
         let T1  : u32 = 0xd76aa478
         let T2  : u32 = 0xe8c7b756

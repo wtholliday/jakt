@@ -278,10 +278,12 @@ function _II(anon a: u32, anon b: u32, anon c: u32, anon d: u32, anon k: u32, an
 
 struct MD5State {
 
-    a: u32
-    b: u32
-    c: u32
-    d: u32
+    a: u32 = 0x67452301
+    b: u32 = 0xefcdab89
+    c: u32 = 0x98badcfe
+    d: u32 = 0x10325476
+    count0: u32 = 0
+    count1: u32 = 0
 
     function process(mut this, data: [u8]) throws {
 
